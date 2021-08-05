@@ -1,0 +1,501 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Desafio Técnico Sicredi",
+        "description": "Aplicação de Votação",
+        "contact": {
+            "name": "Adriano Anschau",
+            "email": "<adrianoanschau@gmail.com>"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://desafio-tecnico-sicredi.herokuapp.com/api/v1"
+        }
+    ],
+    "paths": {
+        "/api/v1/associates": {
+            "get": {
+                "tags": [
+                    "Listar"
+                ],
+                "summary": "Listar Associados",
+                "operationId": "associateList",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cadastrar"
+                ],
+                "summary": "Cadastrar um Associado",
+                "operationId": "associateStore",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 11,
+                            "minLength": 11
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Documento já cadastrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/associates/1": {
+            "get": {
+                "tags": [
+                    "Exibir"
+                ],
+                "summary": "Exibir um Associado",
+                "operationId": "associateShow",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Associado não Encontrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Atualizar"
+                ],
+                "summary": "Atualizar um Associado",
+                "operationId": "associateUpdate",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 11,
+                            "minLength": 11
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Documento já cadastrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Associado não Encontrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Excluir"
+                ],
+                "summary": "Excluir um Associado",
+                "operationId": "associateDestroy",
+                "responses": {
+                    "204": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Associado não Encontrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/schedules": {
+            "get": {
+                "tags": [
+                    "Listar"
+                ],
+                "summary": "Listar Pautas",
+                "operationId": "scheduleList",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cadastrar"
+                ],
+                "summary": "Cadastrar uma Pauta",
+                "operationId": "scheduleStore",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/schedules/1": {
+            "get": {
+                "tags": [
+                    "Exibir"
+                ],
+                "summary": "Exibir uma Pauta",
+                "operationId": "scheduleShow",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não Encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Atualizar"
+                ],
+                "summary": "Atualizar uma Pauta",
+                "operationId": "scheduleUpdate",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Não Encontrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Excluir"
+                ],
+                "summary": "Excluir uma Pauta",
+                "operationId": "scheduleDestroy",
+                "responses": {
+                    "204": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não Encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/schedules/1/openSession": {
+            "put": {
+                "tags": [
+                    "Atualizar"
+                ],
+                "summary": "Abrir Sessão de Votação",
+                "operationId": "scheduleOpenSession",
+                "responses": {
+                    "204": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "409": {
+                        "description": "Já existe sessão aberta para a Pauta",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Pauta com sessão já encerrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não Encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/schedules/1/closeSession": {
+            "put": {
+                "tags": [
+                    "Atualizar"
+                ],
+                "summary": "Fechar Sessão de Votação",
+                "operationId": "scheduleCloseSession",
+                "responses": {
+                    "204": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Pauta com sessão já encerrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não Encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/schedules/1/vote": {
+            "put": {
+                "tags": [
+                    "Atualizar"
+                ],
+                "summary": "Votar em uma Sessão de Votação",
+                "operationId": "scheduleVote",
+                "responses": {
+                    "204": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Não existe sessão aberta para a Pauta | Pauta não encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Pauta com sessão já encerrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/votes": {
+            "get": {
+                "tags": [
+                    "Listar"
+                ],
+                "summary": "Listar votos de uma Pauta",
+                "operationId": "voteList",
+                "parameters": [
+                    {
+                        "name": "schedule_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não encontrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/votes/result": {
+            "get": {
+                "tags": [
+                    "Exibir"
+                ],
+                "summary": "Exibe contagem de votos de uma Pauta",
+                "operationId": "voteResult",
+                "parameters": [
+                    {
+                        "name": "schedule_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Pauta não Encontrada",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

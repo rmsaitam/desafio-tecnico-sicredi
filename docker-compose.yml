@@ -1,0 +1,26 @@
+version: "3"
+services:
+  php-apache:
+    container_name: php7-apache
+    build: ./php7-apache
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src/desafio-tecnico-sicredi:/var/www/html/desafio-tecnico-sicredi
+      - ./php7-apache/config/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+    environment:
+        VIRTUAL_HOST: api.desafio.int
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: sicredi 
+    volumes:
+      - "./db:/var/lib/mysql"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
